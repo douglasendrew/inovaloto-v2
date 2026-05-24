@@ -1,0 +1,19 @@
+{
+    "name": "inovaloto/worker-backup-tenants",
+    "description": "Backup bancas worker for Inovaloto-v2 using Swoole and AWS SDK",
+    "type": "project",
+    "require": {
+        "php": ">=8.2",
+        "ext-swoole": "*",
+        "ext-zip": "*",
+        "illuminate/database": "^10.0",
+        "nesbot/carbon": "^2.66",
+        "aws/aws-sdk-php": "^3.280",
+        "ramsey/uuid": "^4.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": ["src/", "../backend-tenants/src/"]
+        }
+    }
+}

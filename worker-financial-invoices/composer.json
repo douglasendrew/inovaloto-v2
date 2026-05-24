@@ -1,0 +1,17 @@
+{
+    "name": "inovaloto/worker-financial-invoices",
+    "description": "Financial invoices worker for Inovaloto-v2 using Swoole",
+    "type": "project",
+    "require": {
+        "php": ">=8.2",
+        "ext-swoole": "*",
+        "illuminate/database": "^10.0",
+        "nesbot/carbon": "^2.66",
+        "ramsey/uuid": "^4.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": ["src/", "../backend-tenants/src/"]
+        }
+    }
+}

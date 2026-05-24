@@ -1,0 +1,125 @@
+.card-glass {
+    background: rgba(20, 19, 19, 0.14);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(114, 113, 113, 0.493);
+    padding: 15px;
+}
+
+.glass:hover,
+.glass:active,
+.glass:focus {
+    background: rgba(20, 19, 19, 0.14) !important;
+}
+
+.card-glass-mini {
+    padding: 15px !important;
+    background: rgba(0, 0, 0, 0.185);
+    border-radius: 14px;
+    /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    margin-bottom: 0 !important;
+}
+
+.mini-card-icon.icon-color-success {
+    background: rgba(13, 209, 39, 0.219);
+    color: rgb(55, 238, 79);
+    padding: 12px 12px;
+    font-size: 18px;
+    border-radius: 5px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.mini-card-icon.icon-color-info {
+    background: rgba(13, 137, 209, 0.219);
+    color: rgb(48, 121, 190);
+    padding: 12px 12px;
+    font-size: 18px;
+    border-radius: 5px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.mini-card-icon.icon-color-warning {
+    background: rgba(255, 238, 0, 0.267);
+    color: rgb(240, 199, 66);
+    padding: 12px 12px;
+    font-size: 18px;
+    border-radius: 5px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    font-weight: 800 !important;
+}
+
+.mini-card-icon.icon-color-danger {
+    background: rgba(199, 18, 18, 0.171);
+    color: rgb(226, 82, 82);
+    padding: 12px 12px;
+    font-size: 18px;
+    border-radius: 5px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    font-weight: 800 !important;
+}
+
+.mini-card-icon.icon-color-light {
+    background: rgba(112, 112, 112, 0.171);
+    color: rgb(170, 170, 170);
+    padding: 12px 12px;
+    font-size: 18px;
+    border-radius: 5px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    font-weight: 800 !important;
+}
+
+.card-success {
+    background: rgba(13, 209, 39, 0.219);
+    padding: 13px !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgb(48, 190, 67);
+    color: rgb(55, 238, 79) !important;
+}
+
+.card-danger {
+    background: rgba(209, 13, 13, 0.219);
+    padding: 13px !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgb(190, 48, 48);
+    color: rgb(238, 55, 55) !important;
+}
+
+.mini-card-icon.icon-color-secondary {
+    background: rgba(112, 112, 112, 0.171);
+    color: rgb(170, 170, 170);
+    padding: 12px 12px;
+    font-size: 18px;
+    border-radius: 5px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    font-weight: 800 !important;
+}
+
+.card-neutral {
+    background: rgba(112, 112, 112, 0.171);
+    padding: 13px !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgb(170, 170, 170);
+    color: rgb(200, 200, 200) !important;
+}

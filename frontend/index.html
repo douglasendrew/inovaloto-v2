@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html class="no-js" lang="pt-BR" bd-theme="bd-theme-dark">
+<head>
+    <script>
+        // Early theme initialization
+        (function() {
+            var savedTheme = localStorage.getItem('bd_theme_scheme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('bd-theme', savedTheme);
+            }
+        })();
+    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>InovaLoto - Sistema de Gestão</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="theme-style-mode" content="1">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/logo/icon.png">
+    <meta name="theme-color" content="#655afc">
+
+    <!-- CSS originais do projeto base -->
+    <link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/animate.css">
+    <link rel="stylesheet" href="/assets/css/plugins/apexcharts.css">
+    <link rel="stylesheet" href="/assets/css/vendor/icomoon.css">
+    <link rel="stylesheet" href="/assets/css/vendor/fontawesome-pro.css">
+    <link rel="stylesheet" href="/assets/css/plugins/select2.min.css">
+    <link rel="stylesheet" href="/assets/css/plugins/simplebar.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/toast.css">
+    <link rel="stylesheet" href="/assets/css/custom-card.css">
+
+    <style>
+        :root {
+            --border-rgba: rgba(255, 255, 255, 0.05); /* Original Dark Border */
+        }
+
+        /* DARK MODE - ORIGINAL */
+        body {
+            background: linear-gradient(-45deg, #101014, #181822, #101014, #1a1a24) !important;
+            background-size: 400% 400% !important;
+            animation: gradientBG 25s ease infinite !important;
+            color: #d1d5db !important;
+        }
+
+        .app__header__area {
+            background: rgba(16, 16, 20, 0.7) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2) !important;
+            transition: background 0.3s ease;
+        }
+
+        .app-sidebar {
+            background: rgba(16, 16, 20, 0.4) !important;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar__menu-item {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+            border-left: 3px solid transparent !important;
+            border-radius: 0 10px 10px 0 !important;
+            margin-right: 15px !important;
+        }
+
+        .list-group-item {
+            background: #212121 !important;
+            color: #fff !important;
+            border-color: rgba(255, 255, 255, 0.05) !important;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .header-toggle-theme {
+            display: flex; align-items: center; justify-content: center;
+            width: 38px; height: 38px; border-radius: 10px;
+            background: rgba(100, 100, 100, 0.1); margin-right: 15px; cursor: pointer;
+        }
+
+        /* MODO CLARO PREMIUM */
+        html[bd-theme="bd-theme-light"] body {
+            --border-rgba: rgba(0, 0, 0, 0.08);
+            background: #f1f5f9 !important;
+            background-image: 
+                radial-gradient(at 100% 100%, rgba(101, 90, 252, 0.04) 0px, transparent 50%),
+                radial-gradient(at 0% 0%, rgba(101, 90, 252, 0.02) 0px, transparent 50%) !important;
+            color: #334155 !important;
+            animation: none !important;
+        }
+
+        html[bd-theme="bd-theme-light"] .app__header__area {
+            background: rgba(255, 255, 255, 0.85) !important;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e2e8f0 !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03) !important;
+        }
+
+        html[bd-theme="bd-theme-light"] .app-sidebar {
+            background: #ffffff !important;
+            border-right: 1px solid #e2e8f0 !important;
+            box-shadow: 10px 0 30px rgba(0, 0, 0, 0.02) !important;
+        }
+
+        html[bd-theme="bd-theme-light"] .card__wrapper {
+            background: #f8fafc !important;
+            border: 1px solid #e2e8f0 !important;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04) !important;
+            border-radius: 14px !important;
+        }
+
+        html[bd-theme="bd-theme-light"] .theme-text-color { color: #1e293b !important; }
+        
+        html[bd-theme="bd-theme-dark"] .header-toggle-theme .dark-icon { display: block !important; }
+        html[bd-theme="bd-theme-dark"] .header-toggle-theme .light-icon { display: none !important; }
+        html[bd-theme="bd-theme-light"] .header-toggle-theme .dark-icon { display: none !important; }
+        html[bd-theme="bd-theme-light"] .header-toggle-theme .light-icon { display: block !important; }
+    </style>
+</head>
+<body class="body-area">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Scripts Originais Necessários para o Layout Funcionar -->
+    <script src="/assets/js/vendor/jquery-3.7.0.js"></script>
+    <script src="/assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/plugins/simplebar.min.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/vendor/sidebar.js"></script>
+</body>
+</html>

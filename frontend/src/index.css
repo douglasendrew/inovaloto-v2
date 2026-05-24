@@ -1,0 +1,41 @@
+/* 
+  React-specific generic overrides. 
+  The core layout, colors, and components are now entirely handled by the imported 
+  legacy CSS files from /assets/css/ (main.css, custom-card.css, bootstrap, etc.) 
+  to guarantee 100% fidelity to the original 'lotobanca' project.
+*/
+
+/* Hide the loader when React is ready */
+#page-loader {
+  display: none !important;
+}
+
+/* Ensure React root takes full height */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Utility to override Vite's default margin on body */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar to match the original theme */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(101, 90, 252, 0.5);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(101, 90, 252, 0.8);
+}

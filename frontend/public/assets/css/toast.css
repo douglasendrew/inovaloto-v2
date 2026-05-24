@@ -1,0 +1,49 @@
+/* Minimal styling for toasts (glassy, dark-friendly) */
+:root{
+  color-scheme: dark;
+  --border: rgba(255,255,255,.18);
+  --no-bg: rgba(255,255,255,.08); --no: #e9eef5;
+  --ok-bg: hsla(143, 85%, 16%, 0.11); --ok: hsla(140, 90%, 65%, 0.459);
+  --er-bg: hsl(359 85% 16% / .18); --er: hsl(359 90% 70%);
+  --wa-bg: hsl(49 85% 16% / .18);  --wa: hsl(45 100% 70%);
+  --in-bg: hsl(208 85% 16% / .18); --in: hsl(208 90% 70%);
+}
+
+/* containers */
+.toast-container{ position: fixed; display: flex; flex-direction: column; gap:10px; z-index: 99999; pointer-events:none; }
+.tc-left-top{ top:18px; left:18px; align-items:flex-start; }
+.tc-left-bottom{ bottom:18px; left:18px; align-items:flex-start; }
+.tc-right-top{ top:18px; right:18px; align-items:flex-end; }
+.tc-right-bottom{ bottom:18px; right:18px; align-items:flex-end; }
+
+/* toast */
+.toast-custom{
+  --bgc: var(--no-bg); --fg: var(--no);
+  backdrop-filter: blur(8px) saturate(1.1);
+  -webkit-backdrop-filter: blur(8px) saturate(1.1);
+  background: var(--bgc); color: var(--fg);
+  border: 1px solid var(--border); border-radius: 14px;
+  padding: 12px; min-width: 260px; max-width: min(420px,90vw);
+  display:grid; grid-template-columns:12px 1fr auto; gap:10px; align-items:center;
+  pointer-events:auto; animation: pop .14s ease-out;
+}
+@keyframes pop{ from{ transform:scale(.98); opacity:0 } to{ transform:scale(1); opacity:1 } }
+.toast-custom .dot{ width:8px; height:8px; border-radius:99px; background:var(--fg); opacity:.9; box-shadow:0 0 0 4px color-mix(in oklab, var(--fg) 20%, transparent); }
+.toast-custom .remove{ all:unset; cursor:pointer; padding:2px 6px; border-radius:8px; color:color-mix(in oklab, var(--fg) 60%, #fff); }
+.toast-custom .remove:hover{ background:rgba(255,255,255,.08); }
+
+/* variants */
+.toast-custom.success{ background-color: var(--ok-bg); --fg: var(--ok); }
+.toast-custom.error{ background-color: var(--er-bg); --fg: var(--er); }
+.toast-custom.warning{ background-color: var(--wa-bg); --fg: var(--wa); }
+.toast-custom.info{ background-color: var(--in-bg); --fg: var(--in); }
+
+/* enter/exit */
+.tc-left-top .toast-custom, .tc-left-bottom .toast-custom{ animation: slideInL .2s ease-out, pop .14s ease-out; }
+.tc-right-top .toast-custom, .tc-right-bottom .toast-custom{ animation: slideInR .2s ease-out, pop .14s ease-out; }
+@keyframes slideInL{ from{ transform:translateX(-14px); opacity:0 } to{ transform:translateX(0); opacity:1 } }
+@keyframes slideInR{ from{ transform:translateX(14px); opacity:0 } to{ transform:translateX(0); opacity:1 } }
+.fade-out-left{ animation: fadeOutL .18s ease-in forwards }
+.fade-out-right{ animation: fadeOutR .18s ease-in forwards }
+@keyframes fadeOutL{ to{ transform:translateX(-16px); opacity:0 } }
+@keyframes fadeOutR{ to{ transform:translateX(16px); opacity:0 } }
