@@ -7,20 +7,35 @@ import Vendedores from './views/Vendedores';
 import Apostadores from './views/Apostadores';
 import Concursos from './views/Concursos';
 import Sorteios from './views/Sorteios';
+import SorteioOneClick from './views/SorteioOneClick';
 import Wallet from './views/Wallet';
+import AnaliseRisco from './views/AnaliseRisco';
+import AnaliseConsultores from './views/AnaliseConsultores';
 
 export default function App() {
-  const [user, setUser] = useState(null);
-  const [currentPage, setCurrentPage] = useState('dashboard');
-  
-  useEffect(() => {
+  const [user, setUser] = useState(() => {
     const token = localStorage.getItem('inovaloto_token');
     const name = localStorage.getItem('inovaloto_user_name');
     const role = localStorage.getItem('inovaloto_user_role');
+    return (token && name && role) ? { name, role } : null;
+  });
 
-    if (token && name && role) {
-      setUser({ name, role });
-    }
+  const [currentPage, setCurrentPage] = useState(() => {
+    const hash = window.location.hash.replace('#', '');
+    const validPages = ['dashboard', 'vendedores', 'apostadores', 'concursos', 'sorteios', '1click', 'wallet', 'maparisco', 'analise'];
+    return validPages.includes(hash) ? hash : 'dashboard';
+  });
+  
+  useEffect(() => {
+    // Listen for hash changes (e.g. back/forward buttons)
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      const validPages = ['dashboard', 'vendedores', 'apostadores', 'concursos', 'sorteios', '1click', 'wallet', 'maparisco', 'analise'];
+      if (validPages.includes(hash)) {
+        setCurrentPage(hash);
+      }
+    };
+    window.addEventListener('hashchange', handleHashChange);
 
     // Initialize simplebar manually
     setTimeout(() => {
@@ -30,6 +45,9 @@ export default function App() {
       }
     }, 200);
 
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
   }, []);
 
   const toggleSidebar = (e) => {
@@ -63,7 +81,11 @@ export default function App() {
 
   const handleLoginSuccess = (userData) => {
     setUser(userData);
-    setCurrentPage('dashboard');
+    const hash = window.location.hash.replace('#', '');
+    const validPages = ['dashboard', 'vendedores', 'apostadores', 'concursos', 'sorteios', '1click', 'wallet', 'maparisco', 'analise'];
+    const initialPage = validPages.includes(hash) ? hash : 'dashboard';
+    window.location.hash = initialPage;
+    setCurrentPage(initialPage);
   };
 
   const handleLogout = () => {
@@ -71,11 +93,13 @@ export default function App() {
     localStorage.removeItem('inovaloto_user_role');
     localStorage.removeItem('inovaloto_user_name');
     localStorage.removeItem('inovaloto_tenant_name');
+    window.location.hash = '';
     setUser(null);
   };
 
   const navigate = (page, e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
+    window.location.hash = page;
     setCurrentPage(page);
     
     if (window.innerWidth < 991) {
@@ -94,7 +118,10 @@ export default function App() {
       case 'apostadores': return <Apostadores />;
       case 'concursos': return <Concursos />; // Can act as bilhetes/concursos
       case 'sorteios': return <Sorteios />;
+      case '1click': return <SorteioOneClick onNavigate={setCurrentPage} />;
       case 'wallet': return <Wallet />;
+      case 'maparisco': return <AnaliseRisco onNavigate={setCurrentPage} />;
+      case 'analise': return <AnaliseConsultores onNavigate={setCurrentPage} />;
       default: return <Dashboard user={user} onNavigate={setCurrentPage} />;
     }
   };
@@ -112,7 +139,7 @@ export default function App() {
           </a>
         </div>
         
-        <div className="main-sidebar" id="sidebar-scroll" style={{ height: 'calc(100vh - 90px)', marginTop: '90px', overflowY: 'auto', overflowX: 'hidden' }}>
+        <div className="main-sidebar" id="sidebar-scroll" style={{ height: 'calc(100vh - 90px)', marginTop: '75px', overflowY: 'auto', overflowX: 'hidden' }}>
           <nav className="main-menu-container nav nav-pills flex-column sub-open">
             <div className="sidebar-left" id="sidebar-left"></div>
             <ul className="main-menu">

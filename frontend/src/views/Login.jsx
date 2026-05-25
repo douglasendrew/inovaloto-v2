@@ -169,7 +169,20 @@ export default function Login({ onLoginSuccess }) {
     try {
       const res = await api.login(username, password);
       if (res.token) {
-        onLoginSuccess({ name: username, role: res.role });
+        // Save auth data to localStorage to persist user session on refresh
+        localStorage.setItem('inovaloto_token', res.token);
+        
+        const userName = res.user?.name || username;
+        const userRole = res.user?.role || res.role || 'seller';
+        const tenantName = res.tenant?.nome || res.tenant?.name || '';
+
+        localStorage.setItem('inovaloto_user_name', userName);
+        localStorage.setItem('inovaloto_user_role', userRole);
+        if (tenantName) {
+          localStorage.setItem('inovaloto_tenant_name', tenantName);
+        }
+
+        onLoginSuccess({ name: userName, role: userRole });
       }
     } catch (err) {
       setError(err.message || 'Credenciais inválidas.');

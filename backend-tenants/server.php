@@ -13,6 +13,14 @@ use function FastRoute\simpleDispatcher;
 $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $r->get('/dashboard', [App\Controllers\DashboardController::class, 'index']);
 
+    // Mapa de Risco routes
+    $r->get('/mapa-risco', [App\Controllers\MapaRiscoController::class, 'index']);
+    $r->get('/mapa-risco/{modalidade_uuid}', [App\Controllers\MapaRiscoController::class, 'index']);
+
+    // Analise de Consultores routes
+    $r->get('/analise-consultores', [App\Controllers\AnaliseConsultorController::class, 'index']);
+    $r->get('/analise-consultores/details/{uuid}', [App\Controllers\AnaliseConsultorController::class, 'getDetails']);
+
     // Sorteios routes
     $r->get('/sorteios', [App\Controllers\SorteiosController::class, 'index']);
     $r->post('/sorteios/save', [App\Controllers\SorteiosController::class, 'saveSorteio']);
